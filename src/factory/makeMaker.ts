@@ -13,15 +13,18 @@ export const makeMaker = <
     TBaseComps = BaseComps,
 >(
     baseFn: (opt: TBaseOpt) => GameObj<TBaseComps>,
-    defaultOpt: TNewOpt | ((k: KaboomCtx) => TNewOpt),
-    applyComps?: (opt: TBaseOpt & TNewOpt, k: KaboomCtx) => CompList<TNewComps>,
+    defaultOpt: Required<TNewOpt> | ((k: KaboomCtx) => Required<TNewOpt>),
+    applyComps?: (
+        opt: Required<TBaseOpt & TNewOpt>,
+        k: KaboomCtx,
+    ) => CompList<TNewComps>,
 ) => {
-    return function(opt: TBaseOpt & TNewOpt) {
+    return function(opt: TBaseOpt & Partial<TNewOpt>) {
         const k = getK();
 
         const applyNewComponents = <T>(
             obj: GameObj<T>,
-            opt: TBaseOpt & TNewOpt,
+            opt: Required<TBaseOpt & TNewOpt>,
         ) => {
             const comps = applyComps?.(opt, k) || [];
             return use(obj, comps);

@@ -1,16 +1,15 @@
-import type * as Kaboom from "kaboom";
+import { KaboomCtx, Vec2 } from "kaboom";
 import { makeMaker } from "../factory/makeMaker";
 import { ObjOpt } from "./makeBase";
-import { makeRender, RenderOpt } from "./makeRender";
+import { makeRender } from "./makeRender";
 
 export type BackgroundObjOpt = {
-    size?: Kaboom.Vec2;
+    size: Vec2;
 };
 
 const defaultOpt = (
-    k: Kaboom.KaboomCtx,
-): BackgroundObjOpt & RenderOpt & ObjOpt => ({
-    pos: k.center(),
+    k: KaboomCtx,
+): BackgroundObjOpt => ({
     size: k.vec2(k.width(), k.height()),
 });
 

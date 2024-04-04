@@ -2,8 +2,8 @@ import { makeMaker } from "../factory/makeMaker";
 import { makeRender } from "./makeRender";
 
 export type RectOpt = {
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
 };
 
 const defaultOpt = (): RectOpt => ({

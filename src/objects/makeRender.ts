@@ -3,9 +3,9 @@ import { makeMaker } from "../factory/makeMaker";
 import { makeBase } from "./makeBase";
 
 export type RenderOpt = {
-    color?: string;
-    opacity?: number;
-    scale?: Vec2;
+    color: string;
+    opacity: number;
+    scale: Vec2;
 };
 
 const defaultOpt = (k: KaboomCtx): RenderOpt => ({

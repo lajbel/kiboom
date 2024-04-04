@@ -1,6 +1,7 @@
+import { createOptions } from "../options/createOptions";
 import { children } from "./components/childrens";
 import { custom } from "./components/custom";
-import { makeBaseMaker } from "../factory/makeBaseMaker";
+import { makeBaseMaker } from "./factory/makeBaseMaker";
 import { makeMaker } from "./factory/makeMaker";
 import { makeArea } from "./objects/makeArea";
 import { makeBase } from "./objects/makeBase";
@@ -10,7 +11,6 @@ import { makeRect } from "./objects/makeRect";
 import { makeRender } from "./objects/makeRender";
 import { makeSprite } from "./objects/makeSprite";
 import { makeText } from "./objects/makeText";
-import { createOptions } from "../options/createOptions";
 import { createKaboomPlugin } from "./plugin";
 import { kiScene } from "./scenes/kiScene";
 
