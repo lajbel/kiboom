@@ -45,4 +45,3 @@ const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
 });
 
 export { kiboom };
-export default kiboom;

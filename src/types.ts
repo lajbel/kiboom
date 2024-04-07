@@ -1,4 +1,11 @@
-import { AreaComp, GameObj, RectComp, SpriteComp, TextComp } from "kaboom";
+import {
+    AreaComp,
+    GameObj,
+    KaboomCtx,
+    RectComp,
+    SpriteComp,
+    TextComp,
+} from "kaboom";
 import { AreaOpt } from "./objects/makeArea";
 import { BaseComps, ObjOpt } from "./objects/makeBase";
 import { BackgroundOpt } from "./objects/makeBg";
@@ -9,6 +16,8 @@ import { SpriteOpt as SpriteOpt } from "./objects/makeSprite";
 import { TextObjOpt } from "./objects/makeText";
 
 type OptExtend<TBase, TNew> = Partial<TBase & TNew>;
+
+export declare function kiboom(k: KaboomCtx): KiboomPlugin;
 
 /**
  * The kiboom Kaboom's plugin
