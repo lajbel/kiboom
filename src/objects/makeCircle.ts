@@ -1,11 +1,11 @@
 import { makeMaker } from "../factory/makeMaker";
 import { makeRender } from "./makeRender";
 
-export type CircleObjOpt = {
-    radius?: number;
+export type CircleOpt = {
+    radius: number;
 };
 
-const defaultOpt = (): CircleObjOpt => ({
+const defaultOpt = (): CircleOpt => ({
     radius: 15,
 });
 

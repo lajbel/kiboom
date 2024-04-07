@@ -1,12 +1,19 @@
-import { KaboomCtx, Vec2 } from "kaboom";
+import { ColorComp, KaboomCtx, OpacityComp, ScaleComp, Vec2 } from "kaboom";
 import { makeMaker } from "../factory/makeMaker";
 import { makeBase } from "./makeBase";
 
+/**
+ * The options of the render object
+ *
+ * @group Options
+ */
 export type RenderOpt = {
     color: string;
     opacity: number;
     scale: Vec2;
 };
+
+export type RenderComps = ColorComp | OpacityComp | ScaleComp;
 
 const defaultOpt = (k: KaboomCtx): RenderOpt => ({
     color: "#ffffff",

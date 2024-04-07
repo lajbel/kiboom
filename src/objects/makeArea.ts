@@ -2,9 +2,14 @@ import type { KaboomCtx, Vec2 } from "kaboom";
 import { makeMaker } from "../factory/makeMaker";
 import { makeBase } from "./makeBase";
 
-export interface AreaOpt {
+/**
+ * The options of the area object
+ *
+ * @group Options
+ */
+export type AreaOpt = {
     size: Vec2;
-}
+};
 
 const defaultOpt = (k: KaboomCtx): AreaOpt => ({
     size: k.vec2(32, 32),

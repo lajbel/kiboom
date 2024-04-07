@@ -13,15 +13,16 @@ import { makeText } from "./objects/makeText";
 import { createOptions } from "./options/createOptions";
 import { createKaboomPlugin } from "./plugin";
 import { kiScene } from "./scenes/kiScene";
+import { KiboomPlugin } from "./types";
 
-const { run: kiboom } = createKaboomPlugin(() => {
+const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
     return {
-        kiScene,
-        createKaboomPlugin,
+        // kiScene,
+        // createKaboomPlugin,
 
         // components
-        custom,
-        children,
+        // custom,
+        // children,
 
         // objects
         makeBase,
@@ -34,14 +35,14 @@ const { run: kiboom } = createKaboomPlugin(() => {
         makeText,
         makeSprite,
         makeBg,
-
         // makers
-        makeMaker,
-        makeBaseMaker,
+        // makeMaker,
+        // makeBaseMaker,
 
         // options api
-        createOptions,
+        // createOptions,
     };
 });
 
 export { kiboom };
+export default kiboom;

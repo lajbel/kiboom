@@ -2,9 +2,33 @@
   "name": "kiboom",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/kiboom.cjs",
+  "module": "./dist/kiboom.mjs",
+  "types": "./dist/kiboom.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "dts-bundle-generator -o dist/first.d.ts src/types.ts && node scripts/buildAll.js",
+    "doc": "typedoc"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/kiboom.d.ts",
+        "default": "./dist/kiboom.mjs"
+      },
+      "require": {
+        "types": "./dist/kiboom.d.ts",
+        "default": "./dist/kiboom.cjs"
+      }
+    },
+    "./global": "./dist/global.js"
+  },
+  "typesVersions": {
+    "*": {
+      "global": [
+        "./dist/global.d.ts"
+      ]
+    }
   },
   "keywords": [],
   "author": "",
@@ -12,5 +36,16 @@
   "dependencies": {
     "dprint": "^0.45.0",
     "kaboom": "^3000.1.17"
+  },
+  "devDependencies": {
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^20.12.5",
+    "dts-bundle-generator": "^9.3.1",
+    "esbuild": "^0.20.2",
+    "typedoc": "^0.25.12",
+    "typedoc-github-wiki-theme": "2.0.0-next.8",
+    "typedoc-plugin-markdown": "4.0.0-next.55",
+    "typedoc-plugin-merge-modules": "^5.1.0",
+    "typescript": "^5.4.4"
   }
 }

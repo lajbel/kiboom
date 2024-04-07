@@ -1,0 +1,39 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./dist/kiboom.d.ts",
+    "./dist/global.d.ts"
+  ],
+  "out": "./docs",
+  "sortEntryPoints": false,
+  "plugin": [
+    "typedoc-plugin-merge-modules"
+  ],
+  "categorizeByGroup": true,
+  "navigation": {
+    "includeGroups": true
+  },
+  "groupOrder": [
+    "Object Makers",
+    "Options",
+    "References",
+    "Modules",
+    "Namespaces",
+    "Enumerations",
+    "Enumeration Members",
+    "Classes",
+    "Interfaces",
+    "Type Aliases",
+    "Constructors",
+    "Properties",
+    "Variables",
+    "Functions",
+    "Accessors",
+    "Methods"
+  ],
+  "mergeModulesRenameDefaults": true,
+  "mergeModulesMergeMode": "project",
+  "excludeCategories": [
+    "Internal"
+  ]
+}

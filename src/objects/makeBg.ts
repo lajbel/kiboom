@@ -3,13 +3,13 @@ import { makeMaker } from "../factory/makeMaker";
 import { ObjOpt } from "./makeBase";
 import { makeRender } from "./makeRender";
 
-export type BackgroundObjOpt = {
+export type BackgroundOpt = {
     size: Vec2;
 };
 
 const defaultOpt = (
     k: KaboomCtx,
-): BackgroundObjOpt => ({
+): BackgroundOpt => ({
     size: k.vec2(k.width(), k.height()),
 });
 

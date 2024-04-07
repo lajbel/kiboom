@@ -10,15 +10,27 @@ import type {
 } from "kaboom";
 import { makeBaseMaker } from "../factory/makeBaseMaker";
 
-export interface ObjOpt {
+/**
+ * The base options of all object makers
+ *
+ * @group Options
+ */
+export type ObjOpt = {
+    /** Position of the object */
     pos?: Vec2;
+    /** Anchor point of the object */
     anchor?: Anchor | Vec2;
+    /** The rotation of the object */
     rotate?: number;
+    /** The z index of the object */
     z?: number;
+    /** Tags of the object */
     tags?: string[];
+    /** The states of the object */
     states?: string[] | null;
-}
+};
 
+/** The components of the base object */
 export type BaseComps = PosComp | AnchorComp | RotateComp | ZComp | StateComp;
 
 const defaultOptions = (k: KaboomCtx) =>
@@ -31,6 +43,9 @@ const defaultOptions = (k: KaboomCtx) =>
         states: null as string[] | null,
     }) as const;
 
+/**
+ * Make a base object, this base object has many components
+ */
 export const makeBase = makeBaseMaker<ObjOpt, BaseComps>(
     defaultOptions,
     (opt, k) => {
