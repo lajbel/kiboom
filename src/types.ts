@@ -80,12 +80,12 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeRender(
-        opt: OptExtend<ObjOpt, RenderOpt>,
+        opt?: OptExtend<ObjOpt, RenderOpt>,
     ): GameObj<BaseComps & RenderComps>;
 
     /**
      * Make an object with a rectangle component.
-     * Maker extends {@link makeRender}
+     * *Maker extends {@link makeRender}*
      *
      * @group Object Makers
      * @category Object Makers
@@ -96,7 +96,7 @@ export interface KiboomPlugin {
 
     /**
      * Make an object with a circle component.
-     * Maker extends {@link makeRender}
+     * *Maker extends {@link makeRender}*
      *
      * @group Object Makers
      * @category Object Makers
@@ -107,7 +107,7 @@ export interface KiboomPlugin {
 
     /**
      * Make an object with a text component.
-     * Maker extends {@link makeRender}
+     * *Maker extends {@link makeRender}*
      *
      * @group Object Makers
      * @category Object Makers
@@ -118,7 +118,7 @@ export interface KiboomPlugin {
 
     /**
      * Make an object with a sprite component.
-     * Maker extends {@link makeRender}
+     * *Maker extends {@link makeRender}*
      *
      * @group Object Makers
      * @category Object Makers
@@ -129,12 +129,12 @@ export interface KiboomPlugin {
 
     /**
      * Make a background object.
-     * Maker extends {@link makeRender}
+     * *Maker extends {@link makeRender}*
      *
      * @group Object Makers
      * @category Object Makers
      */
     makeBg(
-        opt: Partial<ObjOpt & RenderOpt & BackgroundOpt>,
+        opt?: Partial<ObjOpt & RenderOpt & BackgroundOpt>,
     ): GameObj<BaseComps & RenderComps & RectComp>;
 }

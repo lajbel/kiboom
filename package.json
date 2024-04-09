@@ -8,7 +8,8 @@
   "types": "./dist/kiboom.d.ts",
   "scripts": {
     "build": "dts-bundle-generator -o dist/first.d.ts src/types.ts && node scripts/buildAll.js",
-    "doc": "typedoc"
+    "doc": "typedoc",
+    "test": "esbuild --bundle test/main.ts --outfile=test/game.js --servedir=test --sourcemap"
   },
   "exports": {
     ".": {
@@ -30,6 +31,13 @@
       ]
     }
   },
+  "files": [
+    "src/",
+    "dist/",
+    "README.md",
+    "package.json",
+    "tsconfig.json"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -42,6 +50,7 @@
     "@types/node": "^20.12.5",
     "dts-bundle-generator": "^9.3.1",
     "esbuild": "^0.20.2",
+    "puppeteer": "^22.6.3",
     "typedoc": "^0.25.12",
     "typedoc-github-wiki-theme": "2.0.0-next.8",
     "typedoc-plugin-markdown": "4.0.0-next.55",

@@ -13,7 +13,9 @@ export const makeMaker = <
     TBaseComps = BaseComps,
 >(
     baseFn: (opt: TBaseOpt) => GameObj<TBaseComps>,
-    defaultOpt: Required<TNewOpt> | ((k: KaboomCtx) => Required<TNewOpt>),
+    defaultOpt:
+        | Required<TNewOpt> & Partial<TNewOpt>
+        | ((k: KaboomCtx) => Required<TNewOpt> & Partial<TNewOpt>),
     applyComps?: (
         opt: Required<TBaseOpt & TNewOpt>,
         k: KaboomCtx,
@@ -42,4 +44,12 @@ export const makeMaker = <
 
         return baseObj;
     };
+};
+
+// TNOpt: New Opt
+// TBOpt: Base Opt
+export const makeMaker2 = <
+    TNOpt,
+    TBOpt,
+>() => {
 };

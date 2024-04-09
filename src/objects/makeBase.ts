@@ -61,5 +61,3 @@ export const makeBase = makeBaseMaker<ObjOpt, BaseComps>(
         ];
     },
 );
-
-const myObj = makeBase({});
