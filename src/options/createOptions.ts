@@ -1,4 +1,4 @@
-import { ObjOpt } from "../objects/makeBase";
+import { ObjOpt } from "../objects/makeObject";
 
 export function createOptions<T extends {}, T2 extends ObjOpt>(
     defaultOptions: T,

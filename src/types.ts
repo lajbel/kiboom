@@ -1,4 +1,4 @@
-import {
+import type {
     AreaComp,
     GameObj,
     KaboomCtx,
@@ -6,15 +6,14 @@ import {
     SpriteComp,
     TextComp,
 } from "kaboom";
-import { makeMaker } from "./factory/makeMaker";
-import { AreaOpt } from "./objects/makeArea";
-import { BaseComps, ObjOpt } from "./objects/makeBase";
-import { BackgroundOpt } from "./objects/makeBg";
-import { CircleOpt } from "./objects/makeCircle";
-import { RectOpt } from "./objects/makeRect";
-import { RenderComps, RenderOpt } from "./objects/makeRender";
-import { SpriteOpt as SpriteOpt } from "./objects/makeSprite";
-import { TextObjOpt } from "./objects/makeText";
+import type { AreaOpt } from "./objects/makeArea";
+import type { BackgroundOpt } from "./objects/makeBg";
+import type { CircleOpt } from "./objects/makeCircle";
+import type { BaseComps, ObjOpt } from "./objects/makeObject";
+import type { RectOpt } from "./objects/makeRect";
+import type { RenderComps, RenderOpt } from "./objects/makeRender";
+import type { SpriteOpt } from "./objects/makeSprite";
+import type { TextOpt } from "./objects/makeText";
 
 type OptExtend<TBase, TNew> = Partial<TBase & TNew>;
 
@@ -46,7 +45,7 @@ export interface KiboomPlugin {
      *
      * ```
      */
-    makeBase(opt: Partial<ObjOpt>): GameObj<BaseComps>;
+    makeObject(opt: Partial<ObjOpt>): GameObj<BaseComps>;
 
     /**
      * Make an object with a collider component.
@@ -67,7 +66,7 @@ export interface KiboomPlugin {
 
     /**
      * Make an object with a color and opacity components.
-     * *Maker extends {@link makeBase}*
+     * *Maker extends {@link makeObject}*
      *
      * Is not recommended to use this maker directly,
      * use the other render makers instead:
@@ -114,7 +113,7 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeText(
-        opt: Partial<ObjOpt & RenderOpt & TextObjOpt>,
+        opt: Partial<ObjOpt & RenderOpt & TextOpt>,
     ): GameObj<BaseComps & RenderComps & TextComp>;
 
     /**
@@ -138,9 +137,4 @@ export interface KiboomPlugin {
     makeBg(
         opt?: Partial<ObjOpt & RenderOpt & BackgroundOpt>,
     ): GameObj<BaseComps & RenderComps & RectComp>;
-
-    /**
-     * Make a object maker.
-     */
-    makeMaker: typeof makeMaker;
 }

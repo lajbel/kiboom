@@ -1,6 +1,7 @@
-import { ColorComp, KaboomCtx, OpacityComp, ScaleComp, Vec2 } from "kaboom";
-import { makeMaker } from "../factory/makeMaker";
-import { makeBase } from "./makeBase";
+import { ColorComp, CompList, OpacityComp, ScaleComp, Vec2 } from "kaboom";
+import { extendMaker } from "../factory/makers";
+import { extendOptions } from "../factory/options";
+import { makeObject, objectOpt, ObjOpt } from "./makeObject";
 
 /**
  * The options of the render object
@@ -8,21 +9,23 @@ import { makeBase } from "./makeBase";
  * @group Options
  */
 export type RenderOpt = {
-    color: string;
-    opacity: number;
-    scale: Vec2;
+    color?: string;
+    opacity?: number;
+    scale?: Vec2;
 };
 
 export type RenderComps = ColorComp | OpacityComp | ScaleComp;
 
-const defaultOpt = (k: KaboomCtx): RenderOpt => ({
+export const renderOpt = extendOptions<RenderOpt, ObjOpt>(objectOpt, (k) => ({
     color: "#ffffff",
     opacity: 1,
     scale: k.vec2(1),
-});
+}));
 
-export const makeRender = makeMaker(makeBase, defaultOpt, (opt, k) => [
-    k.color(k.Color.fromHex(opt.color)),
-    k.opacity(opt.opacity),
-    k.scale(opt.scale),
-]);
+export const makeRender = extendMaker(makeObject, renderOpt, (opt, k) => {
+    return [
+        k.color(k.Color.fromHex(opt.color)),
+        k.opacity(opt.opacity),
+        k.scale(opt.scale),
+    ] as CompList<RenderComps>;
+});

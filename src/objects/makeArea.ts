@@ -1,6 +1,7 @@
-import type { KaboomCtx, Vec2 } from "kaboom";
-import { makeMaker } from "../factory/makeMaker";
-import { makeBase } from "./makeBase";
+import { Vec2 } from "kaboom";
+import { extendMaker } from "../factory/makers";
+import { extendOptions } from "../factory/options";
+import { makeObject, objectOpt, ObjOpt } from "./makeObject";
 
 /**
  * The options of the area object
@@ -11,14 +12,9 @@ export type AreaOpt = {
     size: Vec2;
 };
 
-const defaultOpt = (k: KaboomCtx): AreaOpt => ({
-    size: k.vec2(32, 32),
-});
+const areaOpt = extendOptions<AreaOpt, ObjOpt>(objectOpt, (k) => ({}));
 
-/**
- * Make an area object.
- */
-export const makeArea = makeMaker(makeBase, defaultOpt, (opt, k) => [
+export const makeArea = extendMaker(makeObject, areaOpt, (opt, k) => [
     k.area({
         shape: new k.Rect(k.vec2(0), opt.size.x, opt.size.y),
     }),

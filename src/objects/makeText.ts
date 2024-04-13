@@ -1,31 +1,29 @@
 import { TextAlign } from "kaboom";
-import { makeMaker } from "../factory/makeMaker";
-import { makeRender } from "./makeRender";
+import { extendMaker } from "../factory/makers";
+import { extendOptions } from "../factory/options";
+import { ObjOpt } from "./makeObject";
+import { makeRender, RenderOpt, renderOpt } from "./makeRender";
 
-export type TextObjOpt = {
+/**
+ * The options of the text object
+ *
+ * @group Options
+ */
+export type TextOpt = {
     text: string;
     size: number;
     font: string;
     align: TextAlign;
 };
 
-const defaultOpt: TextObjOpt = {
-    text: "sample text",
-    size: 16,
-    font: "happy",
-    align: "center",
-};
+const textOpt = extendOptions<TextOpt, ObjOpt & RenderOpt>(renderOpt, () => ({
+    text: "text",
+    size: 24,
+    font: "monospace",
+    align: "left",
+}));
 
-/**
- * Make a text object.
- *
- * @example
- * ```js
- * const text = k.add(makeText({
- *  text: "Hello, World!",
- * }));
- */
-export const makeText = makeMaker(makeRender, defaultOpt, (opt, k) => [
+export const makeText = extendMaker(makeRender, textOpt, (opt, k) => [
     k.text(opt.text, {
         size: opt.size,
         font: opt.font,

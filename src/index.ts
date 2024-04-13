@@ -1,11 +1,11 @@
 import { children } from "./components/childrens";
 import { custom } from "./components/custom";
-import { makeBaseMaker } from "./factory/makeBaseMaker";
-import { makeMaker } from "./factory/makeMaker";
+import { extendMaker, makeMaker } from "./factory/makers";
+import { extendOptions } from "./factory/options";
 import { makeArea } from "./objects/makeArea";
-import { makeBase } from "./objects/makeBase";
 import { makeBg } from "./objects/makeBg";
 import { makeCircle } from "./objects/makeCircle";
+import { makeObject } from "./objects/makeObject";
 import { makeRect } from "./objects/makeRect";
 import { makeRender } from "./objects/makeRender";
 import { makeSprite } from "./objects/makeSprite";
@@ -25,7 +25,7 @@ const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
         // children,
 
         // objects
-        makeBase,
+        makeObject,
         makeArea,
 
         // -- render
@@ -35,12 +35,14 @@ const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
         makeText,
         makeSprite,
         makeBg,
-        // makers
+
+        // makers creation
         makeMaker,
-        // makeBaseMaker,
+        extendMaker,
 
         // options api
-        // createOptions,
+        makeOptions: createOptions,
+        extendOptions: extendOptions,
     };
 });
 
