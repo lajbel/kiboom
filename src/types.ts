@@ -6,6 +6,7 @@ import type {
     SpriteComp,
     TextComp,
 } from "kaboom";
+import { extendMaker, makeMaker } from "./factory/makers";
 import type { AreaOpt } from "./objects/makeArea";
 import type { BackgroundOpt } from "./objects/makeBg";
 import type { CircleOpt } from "./objects/makeCircle";
@@ -14,8 +15,7 @@ import type { RectOpt } from "./objects/makeRect";
 import type { RenderComps, RenderOpt } from "./objects/makeRender";
 import type { SpriteOpt } from "./objects/makeSprite";
 import type { TextOpt } from "./objects/makeText";
-
-type OptExtend<TBase, TNew> = Partial<TBase & TNew>;
+import { ApplierFN, MakerFN, OptionalOptionFN, OptionFN } from "./utils/types";
 
 export declare function kiboom(k: KaboomCtx): KiboomPlugin;
 
@@ -35,7 +35,7 @@ export interface KiboomPlugin {
      * ```js
      * // Good for parent objects!
      *
-     * const myParent = k.add(makeBase({
+     * const myParent = k.add(makeObject({
      *  pos: k.vec2(100, 100),
      * });
      *
@@ -45,11 +45,11 @@ export interface KiboomPlugin {
      *
      * ```
      */
-    makeObject(opt: Partial<ObjOpt>): GameObj<BaseComps>;
+    makeObject(opt: ObjOpt): GameObj<BaseComps>;
 
     /**
      * Make an object with a collider component.
-     * *Maker extends {@link makeBase}*
+     * *Maker extends {@link makeObject}*
      *
      * @group Object Makers
      * @category Object Makers
@@ -62,7 +62,7 @@ export interface KiboomPlugin {
      * }));
      * ```
      */
-    makeArea(opt: Partial<ObjOpt & AreaOpt>): GameObj<BaseComps & AreaComp>;
+    makeArea(opt: ObjOpt & AreaOpt): GameObj<BaseComps & AreaComp>;
 
     /**
      * Make an object with a color and opacity components.
@@ -80,7 +80,7 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeRender(
-        opt?: OptExtend<ObjOpt, RenderOpt>,
+        opt?: ObjOpt & RenderOpt,
     ): GameObj<BaseComps & RenderComps>;
 
     /**
@@ -91,7 +91,7 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeRect(
-        opt: Partial<ObjOpt & RenderOpt & RectOpt>,
+        opt: ObjOpt & RenderOpt & RectOpt,
     ): GameObj<BaseComps & RenderComps & RectComp>;
 
     /**
@@ -102,7 +102,7 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeCircle(
-        opt: Partial<ObjOpt & RenderOpt & CircleOpt>,
+        opt: ObjOpt & RenderOpt & CircleOpt,
     ): GameObj<BaseComps & RenderComps>;
 
     /**
@@ -113,7 +113,7 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeText(
-        opt: Partial<ObjOpt & RenderOpt & TextOpt>,
+        opt: ObjOpt & RenderOpt & TextOpt,
     ): GameObj<BaseComps & RenderComps & TextComp>;
 
     /**
@@ -124,7 +124,7 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeSprite(
-        opt: Partial<ObjOpt & RenderOpt & SpriteOpt>,
+        opt: ObjOpt & RenderOpt & SpriteOpt,
     ): GameObj<BaseComps & RenderComps & SpriteComp>;
 
     /**
@@ -135,6 +135,33 @@ export interface KiboomPlugin {
      * @category Object Makers
      */
     makeBg(
-        opt?: Partial<ObjOpt & RenderOpt & BackgroundOpt>,
+        opt?: ObjOpt & RenderOpt & BackgroundOpt,
     ): GameObj<BaseComps & RenderComps & RectComp>;
+
+    /**
+     * Make an object maker. This is used internally for {@link makeObject},
+     * but we recommend using {@link extendMaker} instead if you want to
+     * mantain the base options.
+     *
+     * @group Base
+     * @category Base
+     */
+    makeMaker<TComps, TOpt>(
+        /** The default options for the maker */
+        defaultOpt: OptionFN<TOpt>,
+        componentsApply: ApplierFN<TComps, TOpt>,
+    ): MakerFN<TOpt, TComps>;
+
+    /**
+     * Extend a maker with new components.
+     *
+     * @group Base
+     * @category Base
+     */
+    extendMaker<TBaseComps, TBaseOpt, TNewComps, TNewOpt>(
+        baseMaker: MakerFN<TBaseOpt, TBaseComps>,
+        defaultOpt: OptionFN<TNewOpt>,
+        componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt>,
+        baseDefaultOpt?: OptionalOptionFN<TBaseOpt>,
+    ): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps>;
 }

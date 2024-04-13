@@ -1,7 +1,5 @@
-import { children } from "./components/childrens";
-import { custom } from "./components/custom";
 import { extendMaker, makeMaker } from "./factory/makers";
-import { extendOptions } from "./factory/options";
+import { makeOptions } from "./factory/options";
 import { makeArea } from "./objects/makeArea";
 import { makeBg } from "./objects/makeBg";
 import { makeCircle } from "./objects/makeCircle";
@@ -12,7 +10,6 @@ import { makeSprite } from "./objects/makeSprite";
 import { makeText } from "./objects/makeText";
 import { createOptions } from "./options/createOptions";
 import { createKaboomPlugin } from "./plugin";
-import { kiScene } from "./scenes/kiScene";
 import { KiboomPlugin } from "./types";
 
 const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
@@ -41,8 +38,7 @@ const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
         extendMaker,
 
         // options api
-        makeOptions: createOptions,
-        extendOptions: extendOptions,
+        makeOptions: makeOptions,
     };
 });
 

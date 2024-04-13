@@ -1,8 +1,7 @@
-import { TextAlign } from "kaboom";
+import type { TextAlign } from "kaboom";
 import { extendMaker } from "../factory/makers";
-import { extendOptions } from "../factory/options";
-import { ObjOpt } from "./makeObject";
-import { makeRender, RenderOpt, renderOpt } from "./makeRender";
+import { makeOptions } from "../factory/options";
+import { makeRender } from "./makeRender";
 
 /**
  * The options of the text object
@@ -10,23 +9,26 @@ import { makeRender, RenderOpt, renderOpt } from "./makeRender";
  * @group Options
  */
 export type TextOpt = {
+    /** The text to display */
     text: string;
-    size: number;
-    font: string;
-    align: TextAlign;
+    /** The size of the text */
+    textSize?: number;
+    /** The font of the text */
+    textFont?: string;
+    /** The align of the text */
+    textAlign?: TextAlign;
 };
 
-const textOpt = extendOptions<TextOpt, ObjOpt & RenderOpt>(renderOpt, () => ({
-    text: "text",
-    size: 24,
-    font: "monospace",
-    align: "left",
+const textOpt = makeOptions<TextOpt>(() => ({
+    textSize: 24,
+    textFont: "monospace",
+    textAlign: "left",
 }));
 
 export const makeText = extendMaker(makeRender, textOpt, (opt, k) => [
     k.text(opt.text, {
-        size: opt.size,
-        font: opt.font,
-        align: opt.align,
+        size: opt.textSize,
+        font: opt.textFont,
+        align: opt.textAlign,
     }),
 ]);

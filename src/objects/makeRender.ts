@@ -1,7 +1,7 @@
 import { ColorComp, CompList, OpacityComp, ScaleComp, Vec2 } from "kaboom";
 import { extendMaker } from "../factory/makers";
-import { extendOptions } from "../factory/options";
-import { makeObject, objectOpt, ObjOpt } from "./makeObject";
+import { makeOptions } from "../factory/options";
+import { makeObject } from "./makeObject";
 
 /**
  * The options of the render object
@@ -16,7 +16,7 @@ export type RenderOpt = {
 
 export type RenderComps = ColorComp | OpacityComp | ScaleComp;
 
-export const renderOpt = extendOptions<RenderOpt, ObjOpt>(objectOpt, (k) => ({
+export const renderOpt = makeOptions<RenderOpt>((k) => ({
     color: "#ffffff",
     opacity: 1,
     scale: k.vec2(1),

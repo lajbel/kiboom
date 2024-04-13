@@ -1,7 +1,6 @@
 import { extendMaker } from "../factory/makers";
-import { extendOptions } from "../factory/options";
-import { ObjOpt } from "./makeObject";
-import { makeRender, RenderOpt, renderOpt } from "./makeRender";
+import { makeOptions } from "../factory/options";
+import { makeRender } from "./makeRender";
 
 /**
  * The options of the sprite object
@@ -9,14 +8,13 @@ import { makeRender, RenderOpt, renderOpt } from "./makeRender";
  * @group Options
  */
 export type SpriteOpt = {
+    /**
+     * The sprite name
+     */
     sprite: string;
 };
 
-// TODO: Default sprite shouldn't be avaible
-export const spriteOpt = extendOptions<SpriteOpt, ObjOpt & RenderOpt>(
-    renderOpt,
-    () => ({}),
-);
+const spriteOpt = makeOptions<SpriteOpt>(() => ({}));
 
 export const makeSprite = extendMaker(makeRender, spriteOpt, (opt, k) => [
     k.sprite(opt.sprite),

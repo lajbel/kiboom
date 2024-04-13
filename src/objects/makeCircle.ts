@@ -1,7 +1,6 @@
 import { extendMaker } from "../factory/makers";
-import { extendOptions } from "../factory/options";
-import { ObjOpt } from "./makeObject";
-import { makeRender, RenderOpt, renderOpt } from "./makeRender";
+import { makeOptions } from "../factory/options";
+import { makeRender } from "./makeRender";
 
 /**
  * The options of the circle object
@@ -9,13 +8,13 @@ import { makeRender, RenderOpt, renderOpt } from "./makeRender";
  * @group Options
  */
 export type CircleOpt = {
+    /**
+     * The radius of the circle
+     */
     radius: number;
 };
 
-export const circleOpt = extendOptions<CircleOpt, ObjOpt & RenderOpt>(
-    renderOpt,
-    () => ({}),
-);
+export const circleOpt = makeOptions<CircleOpt>(() => ({}));
 
 export const makeCircle = extendMaker(makeRender, circleOpt, (opt, k) => [
     k.circle(opt.radius),

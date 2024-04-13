@@ -1,23 +1,19 @@
-import { CompList, GameObj, KaboomCtx } from "kaboom";
+import { GameObj, KaboomCtx } from "kaboom";
 import { getK } from "../plugin";
-import { FlipOptional } from "../utils/types";
+import {
+    ApplierFN,
+    HasOptionalKey,
+    MakerFN,
+    OptionalOptionFN,
+    OptionFN,
+} from "../utils/types";
 import { use } from "../utils/use";
 import { mergeOptions } from "./options";
 
-type MakerFN<TOpt, TComps> = (
-    opt: TOpt,
-) => GameObj<TComps>;
-
-export const makeMaker = <
-    TComps,
-    TOpt,
->(
-    defaultOpt: (k: KaboomCtx) => TOpt,
-    componentsApply: (
-        opt: Required<TOpt>,
-        k: KaboomCtx,
-    ) => CompList<TComps>,
-): MakerFN<FlipOptional<TOpt>, TComps> => {
+export const makeMaker = <TComps, TOpt>(
+    defaultOpt: OptionFN<TOpt>,
+    componentsApply: ApplierFN<TComps, TOpt>,
+): MakerFN<TOpt, TComps> => {
     return (opt) => {
         const k = getK<KaboomCtx>();
 
@@ -39,31 +35,31 @@ export const makeMaker = <
 
 export const extendMaker = <
     TBaseComps,
+    TBaseOpt,
     TNewComps,
-    TOpt,
+    TNewOpt,
 >(
-    baseMaker: (opt: TOpt) => GameObj<TBaseComps>,
-    defaultOpt: (k: KaboomCtx) => TOpt,
-    componentsApply: (
-        opt: Required<TOpt>,
-        k: KaboomCtx,
-    ) => CompList<TNewComps>,
-): MakerFN<FlipOptional<TOpt>, TBaseComps & TNewComps> => {
+    baseMaker: MakerFN<TBaseOpt, TBaseComps>,
+    defaultOpt: OptionFN<TNewOpt>,
+    componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt>,
+    baseDefaultOpt: OptionalOptionFN<TBaseOpt> = undefined as any,
+): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps> => {
     return (opt) => {
         const k = getK<KaboomCtx>();
 
         const applyNewComponents = <T>(
             obj: GameObj<T>,
-            opt: Required<TOpt>,
+            opt: Required<TNewOpt & TBaseOpt>,
         ) => {
             const comps = componentsApply?.(opt, k);
             return use(obj, comps);
         };
 
-        const baseOpt = defaultOpt(k);
-        const requiredOpt = mergeOptions(baseOpt, opt);
+        const defOpt = defaultOpt(k);
+        const baseOpt = baseDefaultOpt?.(k);
+        const requiredOpt = mergeOptions(defOpt, opt);
 
-        const baseObj = baseMaker(requiredOpt);
+        const baseObj = baseMaker(baseOpt);
         const newObj = applyNewComponents(baseObj, requiredOpt);
 
         return newObj;

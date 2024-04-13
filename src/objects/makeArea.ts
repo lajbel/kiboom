@@ -1,7 +1,7 @@
-import { Vec2 } from "kaboom";
+import type { Vec2 } from "kaboom";
 import { extendMaker } from "../factory/makers";
-import { extendOptions } from "../factory/options";
-import { makeObject, objectOpt, ObjOpt } from "./makeObject";
+import { makeOptions } from "../factory/options";
+import { makeObject } from "./makeObject";
 
 /**
  * The options of the area object
@@ -12,7 +12,7 @@ export type AreaOpt = {
     size: Vec2;
 };
 
-const areaOpt = extendOptions<AreaOpt, ObjOpt>(objectOpt, (k) => ({}));
+const areaOpt = makeOptions<AreaOpt>((k) => ({}));
 
 export const makeArea = extendMaker(makeObject, areaOpt, (opt, k) => [
     k.area({

@@ -1,7 +1,6 @@
 import { extendMaker } from "../factory/makers";
-import { extendOptions } from "../factory/options";
-import { ObjOpt } from "./makeObject";
-import { makeRender, RenderOpt, renderOpt } from "./makeRender";
+import { makeOptions } from "../factory/options";
+import { makeRender } from "./makeRender";
 
 /**
  * The options of the rect object
@@ -9,14 +8,17 @@ import { makeRender, RenderOpt, renderOpt } from "./makeRender";
  * @group Options
  */
 export type RectOpt = {
+    /**
+     * The width of the rect
+     */
     width: number;
+    /**
+     * The height of the rect
+     */
     height: number;
 };
 
-export const rectOpt = extendOptions<RectOpt, ObjOpt & RenderOpt>(
-    renderOpt,
-    () => ({}),
-);
+export const rectOpt = makeOptions<RectOpt>(() => ({}));
 
 export const makeRect = extendMaker(makeRender, rectOpt, (opt, k) => [
     k.rect(opt.width, opt.height),
