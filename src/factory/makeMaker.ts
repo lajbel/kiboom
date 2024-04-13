@@ -4,6 +4,11 @@ import { createOptions } from "../options/createOptions";
 import { getK } from "../plugin";
 import { use } from "../utils/use";
 
+// A options: Options object, that combines default with user provided options
+// makeMaker() makes an option that receives a options object and returns a GameObj, with components
+// extendMaker() takes a maker and extends it with new components and options
+// margeMaker() takes two makers and merges them into a new maker
+
 export const makeMaker = <
     TNewOpt extends TBaseOpt & {
         [name: string]: any;

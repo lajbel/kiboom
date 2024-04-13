@@ -6,6 +6,7 @@ import {
     SpriteComp,
     TextComp,
 } from "kaboom";
+import { makeMaker } from "./factory/makeMaker";
 import { AreaOpt } from "./objects/makeArea";
 import { BaseComps, ObjOpt } from "./objects/makeBase";
 import { BackgroundOpt } from "./objects/makeBg";
@@ -137,4 +138,9 @@ export interface KiboomPlugin {
     makeBg(
         opt?: Partial<ObjOpt & RenderOpt & BackgroundOpt>,
     ): GameObj<BaseComps & RenderComps & RectComp>;
+
+    /**
+     * Make a object maker.
+     */
+    makeMaker: typeof makeMaker;
 }

@@ -36,7 +36,7 @@ const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
         makeSprite,
         makeBg,
         // makers
-        // makeMaker,
+        makeMaker,
         // makeBaseMaker,
 
         // options api
