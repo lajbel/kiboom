@@ -10,7 +10,7 @@ import { makeRender } from "./makeRender";
  * @group Options
  */
 export type BackgroundOpt = {
-    size: Vec2;
+    size?: Vec2;
 };
 
 const backgroundOpt = makeOptions<BackgroundOpt>((k) => ({

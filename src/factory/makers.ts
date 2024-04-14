@@ -57,10 +57,9 @@ export const extendMaker = <
 
         const defOpt = defaultOpt(k);
         const baseOpt = baseDefaultOpt?.(k);
-        const requiredOpt = mergeOptions(defOpt, opt);
+        const requiredOpt = mergeOptions(mergeOptions(defOpt, opt), baseOpt);
 
-        const baseObj = baseMaker(baseOpt);
-        const newObj = applyNewComponents(baseObj, requiredOpt);
+        const newObj = applyNewComponents(baseMaker(requiredOpt), requiredOpt);
 
         return newObj;
     };
