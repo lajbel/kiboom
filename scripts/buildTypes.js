@@ -132,5 +132,3 @@ export async function genDTS() {
     writeFile(`${distDir}/global.d.ts`, globalDtsImport + globalDts);
     writeFile(`${distDir}/global.js`, "");
 }
-
-genDTS();

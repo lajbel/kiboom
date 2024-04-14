@@ -1,7 +1,14 @@
 {
   "name": "kiboom",
   "version": "1.0.0-beta.2",
-  "description": "",
+  "description": "A plugin for Kaboom.js that adds prefab creation",
+  "keywords": [
+    "kaboom.js",
+    "kaboomjs",
+    "kaboom"
+  ],
+  "author": "lajbel",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/kiboom.cjs",
   "module": "./dist/kiboom.mjs",
@@ -40,9 +47,6 @@
     "package.json",
     "tsconfig.json"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "kaboom": "^3000.1.17"
   },
@@ -57,6 +61,7 @@
     "typedoc-github-wiki-theme": "2.0.0-next.8",
     "typedoc-plugin-markdown": "4.0.0-next.55",
     "typedoc-plugin-merge-modules": "^5.1.0",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "wrangler": "^3.50.0"
   }
 }
