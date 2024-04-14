@@ -1,3 +1,5 @@
+import { children } from "./components/childrens";
+import { custom } from "./components/custom";
 import { extendMaker, makeMaker } from "./factory/makers";
 import { makeOptions } from "./factory/options";
 import { makeArea } from "./objects/makeArea";
@@ -8,18 +10,18 @@ import { makeRect } from "./objects/makeRect";
 import { makeRender } from "./objects/makeRender";
 import { makeSprite } from "./objects/makeSprite";
 import { makeText } from "./objects/makeText";
-import { createOptions } from "./options/createOptions";
 import { createKaboomPlugin } from "./plugin";
+import { kiScene } from "./scenes/kiScene";
 import { KiboomPlugin } from "./types";
 
 const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
     return {
-        // kiScene,
+        kiScene,
         // createKaboomPlugin,
 
         // components
-        // custom,
-        // children,
+        custom: custom,
+        children: children,
 
         // objects
         makeObject,

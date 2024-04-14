@@ -9,7 +9,9 @@
   "scripts": {
     "build": "dts-bundle-generator -o dist/first.d.ts src/types.ts && node scripts/buildAll.js",
     "doc": "typedoc",
-    "test": "esbuild --bundle test/main.ts --outfile=test/game.js --servedir=test --sourcemap"
+    "doc:json": "typedoc --json docs.json",
+    "test": "esbuild --bundle test/main.ts --outfile=test/game.js --servedir=test --sourcemap",
+    "fmt": "dprint fmt"
   },
   "exports": {
     ".": {
@@ -42,12 +44,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dprint": "^0.45.0",
     "kaboom": "^3000.1.17"
   },
   "devDependencies": {
     "@types/json-schema": "^7.0.15",
     "@types/node": "^20.12.5",
+    "dprint": "^0.45.1",
     "dts-bundle-generator": "^9.3.1",
     "esbuild": "^0.20.2",
     "puppeteer": "^22.6.3",

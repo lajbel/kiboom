@@ -1,12 +1,15 @@
 import type {
     AreaComp,
+    Comp,
+    EmptyComp,
     GameObj,
     KaboomCtx,
     RectComp,
     SpriteComp,
     TextComp,
 } from "kaboom";
-import { extendMaker, makeMaker } from "./factory/makers";
+import { ChildrenDefinition } from "./components/childrens";
+import { extendMaker } from "./factory/makers";
 import type { AreaOpt } from "./objects/makeArea";
 import type { BackgroundOpt } from "./objects/makeBg";
 import type { CircleOpt } from "./objects/makeCircle";
@@ -15,6 +18,7 @@ import type { RectOpt } from "./objects/makeRect";
 import type { RenderComps, RenderOpt } from "./objects/makeRender";
 import type { SpriteOpt } from "./objects/makeSprite";
 import type { TextOpt } from "./objects/makeText";
+import { SceneState } from "./scenes/SceneState";
 import { ApplierFN, MakerFN, OptionalOptionFN, OptionFN } from "./utils/types";
 
 export declare function kiboom(k: KaboomCtx): KiboomPlugin;
@@ -164,4 +168,24 @@ export interface KiboomPlugin {
         componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt>,
         baseDefaultOpt?: OptionalOptionFN<TBaseOpt>,
     ): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps>;
+
+    /**
+     * Create an scene with an SceneManager
+     *
+     * @alpha In development
+     */
+    kiScene<T extends {}>(
+        name: string,
+        def: (sceneData: SceneState<T>, ...args: any[]) => void,
+    ): () => void;
+
+    /**
+     * A component for define a custom component
+     */
+    custom<T>(custom: () => T): Comp & T;
+
+    /**
+     * A component for define a childrens
+     */
+    children(childrens: ChildrenDefinition<Comp[]>): EmptyComp;
 }

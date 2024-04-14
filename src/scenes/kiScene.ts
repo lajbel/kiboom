@@ -1,5 +1,5 @@
-import { SceneState } from "./SceneState";
 import { getK } from "../plugin";
+import { SceneState } from "./SceneState";
 
 export const kiScene = <T extends {}>(
     name: string,
