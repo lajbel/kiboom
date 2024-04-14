@@ -1,6 +1,6 @@
 {
   "name": "kiboom",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A plugin for Kaboom.js that adds prefab creation",
   "keywords": [
     "kaboom.js",

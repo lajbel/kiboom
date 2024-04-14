@@ -10,6 +10,7 @@ import type {
 } from "kaboom";
 import { ChildrenDefinition } from "./components/childrens";
 import { extendMaker } from "./factory/makers";
+import { makeOptions } from "./factory/options";
 import type { AreaOpt } from "./objects/makeArea";
 import type { BackgroundOpt } from "./objects/makeBg";
 import type { CircleOpt } from "./objects/makeCircle";
@@ -188,4 +189,9 @@ export interface KiboomPlugin {
      * A component for define a childrens
      */
     children(childrens: ChildrenDefinition<Comp[]>): EmptyComp;
+
+    /**
+     * Create a options object
+     */
+    makeOptions<T>(opt: (k: KaboomCtx) => Partial<T>): OptionFN<T>;
 }
