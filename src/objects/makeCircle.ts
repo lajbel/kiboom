@@ -8,9 +8,7 @@ import { makeRender } from "./makeRender";
  * @group Options
  */
 export type CircleOpt = {
-    /**
-     * The radius of the circle
-     */
+    /** The radius of the circle */
     radius: number;
 };
 

@@ -10,6 +10,7 @@ import { makeRender } from "./makeRender";
  * @group Options
  */
 export type BackgroundOpt = {
+    /** The size of the background */
     size?: Vec2;
 };
 

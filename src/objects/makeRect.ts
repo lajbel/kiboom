@@ -2,19 +2,16 @@ import { extendMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 import { makeRender } from "./makeRender";
 
+// TODO: Shouldn't be size?
 /**
  * The options of the rect object
  *
  * @group Options
  */
 export type RectOpt = {
-    /**
-     * The width of the rect
-     */
+    /** The width of the rect */
     width: number;
-    /**
-     * The height of the rect
-     */
+    /** The height of the rect */
     height: number;
 };
 

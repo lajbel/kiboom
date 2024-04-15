@@ -10,7 +10,6 @@ import type {
 } from "kaboom";
 import { ChildrenDefinition } from "./components/childrens";
 import { extendMaker } from "./factory/makers";
-import { makeOptions } from "./factory/options";
 import type { AreaOpt } from "./objects/makeArea";
 import type { BackgroundOpt } from "./objects/makeBg";
 import type { CircleOpt } from "./objects/makeCircle";
@@ -33,22 +32,19 @@ export interface KiboomPlugin {
     /**
      * Make an object with the base components.
      *
-     * @group Object Makers
-     * @category Object Makers
-     *
      * @example
      * ```js
      * // Good for parent objects!
-     *
      * const myParent = k.add(makeObject({
-     *  pos: k.vec2(100, 100),
+     *     pos: k.vec2(100, 100),
      * });
      *
      * myParent.add(k.makeSprite({
-     *  sprite: "bean",
+     *     sprite: "bean",
      * }));
-     *
      * ```
+     *
+     * @group Object Makers
      */
     makeObject(opt: ObjOpt): GameObj<BaseComps>;
 
@@ -56,16 +52,14 @@ export interface KiboomPlugin {
      * Make an object with a collider component.
      * *Maker extends {@link makeObject}*
      *
-     * @group Object Makers
-     * @category Object Makers
-     *
      * @example
      * ```js
      * const clickableArea = k.add(makeArea({
-     *   width: 100,
-     *   height: 100,
+     *     size: k.vec2(100, 100),
      * }));
      * ```
+     *
+     * @group Object Makers
      */
     makeArea(opt: ObjOpt & AreaOpt): GameObj<BaseComps & AreaComp>;
 
@@ -82,7 +76,6 @@ export interface KiboomPlugin {
      * - {@link makeSprite}
      *
      * @group Object Makers
-     * @category Object Makers
      */
     makeRender(
         opt?: ObjOpt & RenderOpt,
@@ -92,8 +85,15 @@ export interface KiboomPlugin {
      * Make an object with a rectangle component.
      * *Maker extends {@link makeRender}*
      *
+     * @example
+     * ```js
+     * const rect = k.add(k.makeRect({
+     *     width: 100,       // from makeRect
+     *     height: 100,      // from makeRect
+     *     color: "#ff00ff", // from makeRender
+     * }));
+     *
      * @group Object Makers
-     * @category Object Makers
      */
     makeRect(
         opt: ObjOpt & RenderOpt & RectOpt,
@@ -103,8 +103,14 @@ export interface KiboomPlugin {
      * Make an object with a circle component.
      * *Maker extends {@link makeRender}*
      *
+     * @example
+     * ```js
+     * const circle = k.add(k.makeCircle({
+     *     radius: 50,       // from makeCircle
+     *     color: "#ff00ff", // from makeRender
+     * }));
+     *
      * @group Object Makers
-     * @category Object Makers
      */
     makeCircle(
         opt: ObjOpt & RenderOpt & CircleOpt,
@@ -114,8 +120,15 @@ export interface KiboomPlugin {
      * Make an object with a text component.
      * *Maker extends {@link makeRender}*
      *
+     * @example
+     * ```js
+     * const text = k.add(k.makeText({
+     *     text: "Hello, world!", // from makeText
+     *     size: 24,              // from makeText
+     *     opacity: 0,            // from makeRender
+     * }));
+     *
      * @group Object Makers
-     * @category Object Makers
      */
     makeText(
         opt: ObjOpt & RenderOpt & TextOpt,
@@ -125,15 +138,22 @@ export interface KiboomPlugin {
      * Make an object with a sprite component.
      * *Maker extends {@link makeRender}*
      *
+     * @example
+     * ```js
+     * const sprite = k.add(k.makeSprite({
+     *     sprite: "bean",        // from makeSprite
+     *     scale: 2,              // from makeRender
+     *     pos: k.vec2(100, 100), // from makeObject
+     * }));
+     *
      * @group Object Makers
-     * @category Object Makers
      */
     makeSprite(
         opt: ObjOpt & RenderOpt & SpriteOpt,
     ): GameObj<BaseComps & RenderComps & SpriteComp>;
 
     /**
-     * Make a background object.
+     * Make a color background object.
      * *Maker extends {@link makeRender}*
      *
      * @group Object Makers

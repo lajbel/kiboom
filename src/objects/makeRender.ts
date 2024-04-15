@@ -9,8 +9,11 @@ import { makeObject } from "./makeObject";
  * @group Options
  */
 export type RenderOpt = {
+    /** The color of the object. IN HEX: #fff00f */
     color?: string;
+    /** The opacity of the object. From 0 to 1 */
     opacity?: number;
+    /** The scale of the object */
     scale?: Vec2;
 };
 

@@ -9,6 +9,7 @@ import { makeObject } from "./makeObject";
  * @group Options
  */
 export type AreaOpt = {
+    /** The size of the area */
     size: Vec2;
 };
 
