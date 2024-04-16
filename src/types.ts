@@ -18,8 +18,10 @@ import type { RectOpt } from "./objects/makeRect";
 import type { RenderComps, RenderOpt } from "./objects/makeRender";
 import type { SpriteOpt } from "./objects/makeSprite";
 import type { TextOpt } from "./objects/makeText";
-import { SceneState } from "./scenes/SceneState";
-import { ApplierFN, MakerFN, OptionalOptionFN, OptionFN } from "./utils/types";
+import type { SceneState } from "./scenes/SceneState";
+import { ApplierFN, MakerFN, OptionFN } from "./utils/types";
+
+export { SceneState };
 
 export declare function kiboom(k: KaboomCtx): KiboomPlugin;
 
