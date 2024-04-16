@@ -5,9 +5,13 @@
   "keywords": [
     "kaboom.js",
     "kaboomjs",
-    "kaboom"
+    "kaboom",
+    "plugin",
+    "factory"
   ],
-  "author": "lajbel",
+  "homepage": "https://kiboom.lajbel.com",
+  "repository": "github:lajbel/kiboom",
+  "author": "lajbel <lajbelms@gmail.com>",
   "license": "MIT",
   "type": "module",
   "main": "./dist/kiboom.cjs",
