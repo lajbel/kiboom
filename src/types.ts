@@ -181,7 +181,6 @@ export interface KiboomPlugin {
      * Extend a maker with new components.
      *
      * @group Base
-     * @category Base
      */
     extendMaker<TBaseComps, TBaseOpt, TNewComps, TNewOpt>(
         baseMaker: MakerFN<TBaseOpt, TBaseComps>,
@@ -193,6 +192,7 @@ export interface KiboomPlugin {
      * Create an scene with an SceneManager
      *
      * @alpha In development
+     * @group Scenes
      */
     kiScene<T extends {}>(
         name: string,
@@ -201,16 +201,22 @@ export interface KiboomPlugin {
 
     /**
      * A component for define a custom component
+     *
+     * @group Components
      */
     custom<T>(custom: () => T): Comp & T;
 
     /**
      * A component for define a childrens
+     *
+     * @group Components
      */
     children(childrens: ChildrenDefinition<Comp[]>): EmptyComp;
 
     /**
      * Create a options object
+     *
+     * @group Base
      */
     makeOptions<T>(opt: (k: KaboomCtx) => Partial<T>): OptionFN<T>;
 }
