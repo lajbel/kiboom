@@ -2,7 +2,7 @@ import { Vec2 } from "kaboom";
 import { extendMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 import { ObjOpt } from "./makeObject";
-import { makeRender } from "./makeRender";
+import { makeRender, RenderOpt } from "./makeRender";
 
 /**
  * The options of the background object
@@ -10,18 +10,19 @@ import { makeRender } from "./makeRender";
  * @group Options
  */
 export type BackgroundOpt = {
-    /** The size of the background */
+    /**
+     * The size of the background
+     */
     size?: Vec2;
 };
 
-const backgroundOpt = makeOptions<BackgroundOpt>((k) => ({
-    size: k.vec2(k.width(), k.height()),
-}));
-
-const objOpt = makeOptions<ObjOpt>((k) => ({
-    pos: k.vec2(k.center()),
-}));
+const backgroundOpt = makeOptions<BackgroundOpt & RenderOpt & ObjOpt>(
+    (k) => ({
+        size: k.vec2(k.width(), k.height()),
+        pos: k.center(),
+    }),
+);
 
 export const makeBg = extendMaker(makeRender, backgroundOpt, (opt, k) => [
     k.rect(opt.size.x, opt.size.y),
-], objOpt);
+]);

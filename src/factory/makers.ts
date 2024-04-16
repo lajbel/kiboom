@@ -40,9 +40,8 @@ export const extendMaker = <
     TNewOpt,
 >(
     baseMaker: MakerFN<TBaseOpt, TBaseComps>,
-    defaultOpt: OptionFN<TNewOpt>,
-    componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt>,
-    baseDefaultOpt: OptionalOptionFN<TBaseOpt> = undefined as any,
+    defaultOpt: OptionFN<TNewOpt> | OptionFN<TNewOpt & TBaseOpt>,
+    componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt> = () => [],
 ): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps> => {
     return (opt) => {
         const k = getK<KaboomCtx>();
@@ -56,8 +55,7 @@ export const extendMaker = <
         };
 
         const defOpt = defaultOpt(k);
-        const baseOpt = baseDefaultOpt?.(k);
-        const requiredOpt = mergeOptions(mergeOptions(defOpt, opt), baseOpt);
+        const requiredOpt = mergeOptions(defOpt, opt);
 
         const newObj = applyNewComponents(baseMaker(requiredOpt), requiredOpt);
 

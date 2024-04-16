@@ -11,7 +11,7 @@ import type {
 import { ChildrenDefinition } from "./components/childrens";
 import { extendMaker } from "./factory/makers";
 import type { AreaOpt } from "./objects/makeArea";
-import type { BackgroundOpt } from "./objects/makeBg";
+import { BackgroundOpt } from "./objects/makeBg";
 import type { CircleOpt } from "./objects/makeCircle";
 import type { BaseComps, ObjOpt } from "./objects/makeObject";
 import type { RectOpt } from "./objects/makeRect";
@@ -185,9 +185,8 @@ export interface KiboomPlugin {
      */
     extendMaker<TBaseComps, TBaseOpt, TNewComps, TNewOpt>(
         baseMaker: MakerFN<TBaseOpt, TBaseComps>,
-        defaultOpt: OptionFN<TNewOpt>,
+        defaultOpt: OptionFN<TNewOpt> | OptionFN<TNewOpt & TBaseOpt>,
         componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt>,
-        baseDefaultOpt?: OptionalOptionFN<TBaseOpt>,
     ): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps>;
 
     /**

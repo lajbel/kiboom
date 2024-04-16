@@ -1,22 +1,20 @@
+import { Vec2 } from "kaboom";
 import { extendMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 import { makeRender } from "./makeRender";
 
-// TODO: Shouldn't be size?
 /**
  * The options of the rect object
  *
  * @group Options
  */
 export type RectOpt = {
-    /** The width of the rect */
-    width: number;
-    /** The height of the rect */
-    height: number;
+    /** The size of the rect */
+    size: Vec2;
 };
 
 export const rectOpt = makeOptions<RectOpt>(() => ({}));
 
 export const makeRect = extendMaker(makeRender, rectOpt, (opt, k) => [
-    k.rect(opt.width, opt.height),
+    k.rect(opt.size.x, opt.size.y),
 ]);
