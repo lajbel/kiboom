@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.5 - TBD
+
+- (fix) Update some types and examples
+
 ## 1.0.4 - 16/04/2024
 
 - (feat) Now `extendMaker` doesn't need the base maker options, and is not needed

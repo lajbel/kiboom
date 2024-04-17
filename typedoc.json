@@ -14,22 +14,10 @@
     "includeGroups": true
   },
   "groupOrder": [
-    "Object Makers",
-    "Options",
-    "References",
-    "Modules",
-    "Namespaces",
-    "Enumerations",
-    "Enumeration Members",
-    "Classes",
-    "Interfaces",
-    "Type Aliases",
-    "Constructors",
-    "Properties",
-    "Variables",
     "Functions",
-    "Accessors",
-    "Methods"
+    "Type Aliases",
+    "Classes",
+    "Interfaces"
   ],
   "mergeModulesRenameDefaults": true,
   "mergeModulesMergeMode": "project",

@@ -90,10 +90,10 @@ export interface KiboomPlugin {
      * @example
      * ```js
      * const rect = k.add(k.makeRect({
-     *     width: 100,       // from makeRect
-     *     height: 100,      // from makeRect
-     *     color: "#ff00ff", // from makeRender
+     *     size: k.vec2(50, 50)  // from makeRect
+     *     color: "#ff00ff",     // from makeRender
      * }));
+     * ```
      *
      * @group Object Makers
      */
@@ -183,17 +183,33 @@ export interface KiboomPlugin {
      * Extend a maker with new components.
      *
      * @group Base
+     *
+     * @template TBaseComps - The base components from the base maker
+     * @template TBaseOpt - The base options from the base maker
+     * @template TNewComps - The new components added to the base
+     * @template TNewOpt - The new options added to the base
+     *
+     * @returns A new maker with the new components and options
      */
     extendMaker<TBaseComps, TBaseOpt, TNewComps, TNewOpt>(
+        /**
+         * The base maker to extend. Example: makeObject
+         */
         baseMaker: MakerFN<TBaseOpt, TBaseComps>,
+        /**
+         * An options object created with {@link makeOptions}
+         */
         defaultOpt: OptionFN<TNewOpt> | OptionFN<TNewOpt & TBaseOpt>,
         componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt>,
+        /**
+         * A function that returns the new maker
+         */
     ): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps>;
 
     /**
      * Create an scene with an SceneManager
      *
-     * @alpha In development
+     * @alpha
      * @group Scenes
      */
     kiScene<T extends {}>(
@@ -202,14 +218,14 @@ export interface KiboomPlugin {
     ): () => void;
 
     /**
-     * A component for define a custom component
+     * A component for define a custom component.
      *
      * @group Components
      */
     custom<T>(custom: () => T): Comp & T;
 
     /**
-     * A component for define a childrens
+     * A component for define a childrens/home/lajbel/gh/kiboom/src
      *
      * @group Components
      */
@@ -219,6 +235,17 @@ export interface KiboomPlugin {
      * Create a options object
      *
      * @group Base
+     *
+     * @example
+     * ```js
+     * const myOptions = k.makeOptions(k => ({
+     *    pos: k.vec2(100, 100),
+     *    scale: 2,
+     * }));
+     *
+     * const myObj = k.extendMaker(k.makeObject, myOptions, (comps, opt) => ({
+     *     // ...
+     * });
      */
     makeOptions<T>(opt: (k: KaboomCtx) => Partial<T>): OptionFN<T>;
 }
