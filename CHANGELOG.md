@@ -2,14 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.0.5 - TBD
+## 1.0.5 - 21/04/2024
 
-- (fix) Update some types and examples
+- (doc) Update some types and examples
 
 ## 1.0.4 - 16/04/2024
 
 - (feat) Now `extendMaker` doesn't need the base maker options, and is not needed
-a component applier, now being
+  a component applier, now being
 
 > extendMaker(baseMaker, defaultOpt, componentsApply?)
 

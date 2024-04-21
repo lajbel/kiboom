@@ -212,7 +212,7 @@ export interface KiboomPlugin {
      * @alpha
      * @group Scenes
      */
-    kiScene<T extends {}>(
+    kiscene<T extends {}>(
         name: string,
         def: (sceneData: SceneState<T>, ...args: any[]) => void,
     ): () => void;

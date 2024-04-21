@@ -1,7 +1,7 @@
 import { getK } from "../plugin";
 import { SceneState } from "./SceneState";
 
-export const kiScene = <T extends {}>(
+export const kiscene = <T extends {}>(
     name: string,
     def: (sceneData: SceneState<T>, ...args: any[]) => void,
 ) => {

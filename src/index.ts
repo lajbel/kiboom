@@ -11,17 +11,17 @@ import { makeRender } from "./objects/makeRender";
 import { makeSprite } from "./objects/makeSprite";
 import { makeText } from "./objects/makeText";
 import { createKaboomPlugin } from "./plugin";
-import { kiScene } from "./scenes/kiScene";
+import { kiscene } from "./scenes/kiscene";
 import { KiboomPlugin } from "./types";
 
 const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
     return {
-        kiScene,
+        kiscene,
         // createKaboomPlugin,
 
         // components
-        custom: custom,
-        children: children,
+        custom,
+        children,
 
         // objects
         makeObject,
@@ -40,7 +40,7 @@ const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
         extendMaker,
 
         // options api
-        makeOptions: makeOptions,
+        makeOptions,
     };
 });
 
