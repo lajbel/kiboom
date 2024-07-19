@@ -1,4 +1,4 @@
-import { Comp } from "kaboom";
+import { Comp } from "kaplay";
 
 export const custom = <T>(
     custom: () => T,

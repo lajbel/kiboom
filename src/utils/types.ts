@@ -1,4 +1,5 @@
-import { CompList, GameObj, KaboomCtx } from "kaboom";
+
+import type { KAPLAYCtx, GameObj, CompList } from "kaplay";
 
 /**
  * A function that creates a Game Object.
@@ -32,7 +33,7 @@ export type MakerFN<TOpt, TComps> = (
  */
 export type ApplierFN<TComps, TOpt> = (
     opt: Required<TOpt>,
-    k: KaboomCtx,
+    k: KAPLAYCtx,
 ) => CompList<TComps>;
 
 export type OptionalOptionFN<T> = T extends HasOptionalKey<T>
@@ -49,5 +50,5 @@ export type HasOptionalKey<T> = T[keyof T] extends NonNullable<T[keyof T]>
 export type OptionFN<
     TOpt,
 > = (
-    k: KaboomCtx,
+    k: KAPLAYCtx,
 ) => TOpt;

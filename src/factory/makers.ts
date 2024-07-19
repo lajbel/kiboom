@@ -1,10 +1,8 @@
-import { GameObj, KaboomCtx } from "kaboom";
+import { GameObj, type KAPLAYCtx } from "kaplay";
 import { getK } from "../plugin";
 import {
     ApplierFN,
-    HasOptionalKey,
     MakerFN,
-    OptionalOptionFN,
     OptionFN,
 } from "../utils/types";
 import { use } from "../utils/use";
@@ -15,7 +13,7 @@ export const makeMaker = <TComps, TOpt>(
     componentsApply: ApplierFN<TComps, TOpt>,
 ): MakerFN<TOpt, TComps> => {
     return (opt) => {
-        const k = getK<KaboomCtx>();
+        const k = getK<KAPLAYCtx>();
 
         const applyNewComponents = <T>(
             obj: GameObj<T>,
@@ -44,7 +42,7 @@ export const extendMaker = <
     componentsApply: ApplierFN<TNewComps, TNewOpt & TBaseOpt> = () => [],
 ): MakerFN<TNewOpt & TBaseOpt, TNewComps & TBaseComps> => {
     return (opt) => {
-        const k = getK<KaboomCtx>();
+        const k = getK<KAPLAYCtx>();
 
         const applyNewComponents = <T>(
             obj: GameObj<T>,

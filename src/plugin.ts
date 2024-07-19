@@ -1,20 +1,20 @@
-import { KaboomCtx } from "kaboom";
+import { KAPLAYCtx } from "kaplay";
 
-let kCtx: KaboomCtx | null = null;
+let kCtx: KAPLAYCtx | null = null;
 
-export function getK<T extends KaboomCtx = KaboomCtx>(): T {
+export function getK<T extends KAPLAYCtx = KAPLAYCtx>(): T {
     if (!kCtx) {
         throw new Error(
-            "Kaboom context is not initialized, you can't use it now",
+            "KAPLAY context is not initialized, you can't use it now",
         );
     }
 
     return kCtx as T;
 }
 
-export const createKaboomPlugin = <T>(pluginRun: (k: KaboomCtx) => T) => {
+export const createKAPLAYPlugin = <T>(pluginRun: (k: KAPLAYCtx) => T) => {
     return {
-        run: (k: KaboomCtx) => {
+        run: (k: KAPLAYCtx) => {
             kCtx = k;
 
             return {

@@ -1,4 +1,4 @@
-import type { Vec2 } from "kaboom";
+import type { Vec2 } from "kaplay";
 import { extendMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 import { makeObject } from "./makeObject";

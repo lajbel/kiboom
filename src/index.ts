@@ -10,11 +10,11 @@ import { makeRect } from "./objects/makeRect";
 import { makeRender } from "./objects/makeRender";
 import { makeSprite } from "./objects/makeSprite";
 import { makeText } from "./objects/makeText";
-import { createKaboomPlugin } from "./plugin";
+import { createKAPLAYPlugin } from "./plugin";
 import { kiscene } from "./scenes/kiscene";
 import { KiboomPlugin } from "./types";
 
-const { run: kiboom } = createKaboomPlugin<KiboomPlugin>(() => {
+const { run: kiboom } = createKAPLAYPlugin<KiboomPlugin>(() => {
     return {
         kiscene,
         // createKaboomPlugin,

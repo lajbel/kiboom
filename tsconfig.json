@@ -2,7 +2,11 @@
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ]
   },
   "files": [
     "./dist/global.d.ts",

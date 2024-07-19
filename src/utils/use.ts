@@ -1,5 +1,5 @@
 // Add components to game object
-import type { Comp, CompList, GameObj } from "kaboom";
+import type { Comp, CompList, GameObj } from "kaplay";
 
 export function use<T, T2>(
     obj: GameObj<T>,

@@ -7,7 +7,7 @@ import type {
     StateComp,
     Vec2,
     ZComp,
-} from "kaboom";
+} from "kaplay";
 import { makeMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 

@@ -1,4 +1,4 @@
-import { Comp, EmptyComp } from "kaboom";
+import { Comp, EmptyComp } from "kaplay";
 
 export type ChildrenDefinition<T extends Comp[]> = {
     [name: string]: () => T;

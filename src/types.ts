@@ -3,11 +3,11 @@ import type {
     Comp,
     EmptyComp,
     GameObj,
-    KaboomCtx,
+    KAPLAYCtx,
     RectComp,
     SpriteComp,
     TextComp,
-} from "kaboom";
+} from "kaplay";
 import { ChildrenDefinition } from "./components/childrens";
 import { extendMaker } from "./factory/makers";
 import type { AreaOpt } from "./objects/makeArea";
@@ -23,10 +23,10 @@ import { ApplierFN, MakerFN, OptionFN } from "./utils/types";
 
 export { SceneState };
 
-export declare function kiboom(k: KaboomCtx): KiboomPlugin;
+export declare function kiboom(k: KAPLAYCtx): KiboomPlugin;
 
 /**
- * The kiboom Kaboom's plugin
+ * The kiboom KAPLAY's plugin
  *
  * @internal
  */
@@ -247,5 +247,5 @@ export interface KiboomPlugin {
      *     // ...
      * });
      */
-    makeOptions<T>(opt: (k: KaboomCtx) => Partial<T>): OptionFN<T>;
+    makeOptions<T>(opt: (k: KAPLAYCtx) => Partial<T>): OptionFN<T>;
 }

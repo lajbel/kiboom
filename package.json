@@ -1,11 +1,13 @@
 {
   "name": "kiboom",
   "version": "1.0.5",
-  "description": "A plugin for Kaboom.js that adds prefab creation",
+  "description": "A plugin for KAPLAY that adds prefab like creation",
   "keywords": [
     "kaboom.js",
     "kaboomjs",
     "kaboom",
+    "kaplay",
+    "kaplay.js",
     "plugin",
     "factory"
   ],
@@ -52,7 +54,7 @@
     "tsconfig.json"
   ],
   "dependencies": {
-    "kaboom": "^3000.1.17"
+    "kaplay": "3001.0.0-alpha.18"
   },
   "devDependencies": {
     "@types/json-schema": "^7.0.15",
@@ -64,5 +66,6 @@
     "typedoc-plugin-merge-modules": "^5.1.0",
     "typescript": "^5.4.4",
     "wrangler": "^3.50.0"
-  }
+  },
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }

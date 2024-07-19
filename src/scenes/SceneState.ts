@@ -1,4 +1,4 @@
-import type { AudioPlay, AudioPlayOpt } from "kaboom";
+import type { AudioPlay, AudioPlayOpt } from "kaplay";
 import { getK } from "../plugin";
 
 /**

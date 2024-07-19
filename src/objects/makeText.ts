@@ -1,4 +1,4 @@
-import type { TextAlign } from "kaboom";
+import type { TextAlign } from "kaplay";
 import { extendMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 import { makeRender } from "./makeRender";

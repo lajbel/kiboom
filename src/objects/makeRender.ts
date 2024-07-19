@@ -1,4 +1,4 @@
-import { ColorComp, CompList, OpacityComp, ScaleComp, Vec2 } from "kaboom";
+import { ColorComp, CompList, OpacityComp, ScaleComp, Vec2 } from "kaplay";
 import { extendMaker } from "../factory/makers";
 import { makeOptions } from "../factory/options";
 import { makeObject } from "./makeObject";
