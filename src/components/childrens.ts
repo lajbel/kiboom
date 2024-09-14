@@ -1,6 +1,6 @@
 import { Comp, EmptyComp } from "kaplay";
 
-export type ChildrenDefinition<T extends Comp[]> = {
+export type ChildrenDefinition<T extends (Comp | string)[]> = {
     [name: string]: () => T;
 };
 
