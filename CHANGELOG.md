@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.2.2
+
+- fix: `makeOptions` don't accepting tags
+
+## 1.2.0
+
+Now we support KAPLAY
+
 ## 1.0.5 - 21/04/2024
 
 - (doc) Update some types and examples
