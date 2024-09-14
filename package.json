@@ -1,6 +1,6 @@
 {
   "name": "kiboom",
-  "version": "1.0.6",
+  "version": "1.2.1",
   "description": "A plugin for KAPLAY that adds prefab like creation",
   "keywords": [
     "kaboom.js",
@@ -20,7 +20,7 @@
   "module": "./dist/kiboom.mjs",
   "types": "./dist/kiboom.d.ts",
   "scripts": {
-    "install": "pnpm run build",
+    "prepare": "pnpm run build",
     "build": "dts-bundle-generator -o dist/first.d.ts src/types.ts && node scripts/buildAll.js",
     "doc": "typedoc",
     "doc:json": "typedoc --json docs.json",
