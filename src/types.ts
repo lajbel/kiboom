@@ -229,7 +229,7 @@ export interface KiboomPlugin {
      *
      * @group Components
      */
-    children(childrens: ChildrenDefinition<Comp[]>): EmptyComp;
+    children(childrens: ChildrenDefinition<(Comp | string)[]>): EmptyComp;
 
     /**
      * Create a options object

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.2.3
+
+- refix: fix: `makeOptions` don't accepting tags
+
 ## 1.2.2
 
 - fix: `makeOptions` don't accepting tags
