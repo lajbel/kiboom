@@ -1,7 +1,5 @@
 node_modules
-dist
-test
-docs
 docs.json
 .wrangler
 .vscode
+dist

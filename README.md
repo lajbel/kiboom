@@ -1,5 +1,4 @@
-kiboom is a KAPLAY plugin that mainly provides a set of new "factory"
-functions, made for create new easily modifiable objects.
+KIBOOM is a toolbox for KAPLAY, that provides some features that are not available in KAPLAY.
 
 ## Installation
 
