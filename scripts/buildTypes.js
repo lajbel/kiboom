@@ -1,7 +1,6 @@
 import fs from "fs/promises";
 import ts from "typescript";
 
-const srcDir = "src";
 const distDir = "dist";
 
 // check if folder dist exists, if not, create it

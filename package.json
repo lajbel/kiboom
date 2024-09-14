@@ -1,6 +1,6 @@
 {
   "name": "kiboom",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A plugin for KAPLAY that adds prefab like creation",
   "keywords": [
     "kaboom.js",
@@ -20,11 +20,13 @@
   "module": "./dist/kiboom.mjs",
   "types": "./dist/kiboom.d.ts",
   "scripts": {
+    "install": "pnpm run build",
     "build": "dts-bundle-generator -o dist/first.d.ts src/types.ts && node scripts/buildAll.js",
     "doc": "typedoc",
     "doc:json": "typedoc --json docs.json",
     "test": "esbuild --bundle test/main.ts --outfile=test/game.js --servedir=test --sourcemap",
-    "fmt": "dprint fmt"
+    "fmt": "dprint fmt",
+    "dev": "vite"
   },
   "exports": {
     ".": {
@@ -54,7 +56,8 @@
     "tsconfig.json"
   ],
   "dependencies": {
-    "kaplay": "3001.0.0-alpha.18"
+    "kaplay": "3001.0.0-beta.1",
+    "vite": "^5.4.5"
   },
   "devDependencies": {
     "@types/json-schema": "^7.0.15",
